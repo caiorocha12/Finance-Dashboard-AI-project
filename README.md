@@ -14,6 +14,8 @@ The project uses AI in a practical way to help users create custom portfolio ana
 
 The project started as a finance analysis notebook and was later converted into a modular Streamlit application.
 
+You can access the dashboard through https://caiorocha12-finance-ai-dashboard.streamlit.app/
+
 ```markdown
 ## Core Principle
 
