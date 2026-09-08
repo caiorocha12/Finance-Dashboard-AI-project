@@ -43,14 +43,19 @@ The data pipeline is structured as follows:
 
 User prompt or sidebar
         ↓
+        
 ai_inputs.py       # interpret AI prompt, if used
         ↓
+        
 inputs.py          # validate and standardize inputs
         ↓
+        
 pipeline.py        # download data and coordinate analysis
         ↓
+        
 finance.py         # perform calculations
         ↓
+        
 app.py             # display tables, charts, and summary
 
 Each file handles a specific part of the workflow, with the goal of creating a more organized and reliable user experience.
