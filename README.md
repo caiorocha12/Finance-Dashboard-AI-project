@@ -2,21 +2,23 @@
 
 This project analyzes the historical performance and risk of individual assets and a custom portfolio using real market data from Yahoo Finance.
 
-The main goal of this project was to build a complete automated finance & data science workflow. From proofreading inputs to downloading raw data to calculating financial metrics from each asset, the project uses AI in a practical way to help user create custom visual dashboards and understand portfolio metrics.
+The main goal of this project was to build a complete automated finance and data science workflow: from validating user inputs, to downloading raw market data, to calculating asset and portfolio metrics, to displaying the results in an interactive dashboard.
 
-The project started as a finance notebook, and later was converted into a modular Streamlit application.
+The project uses AI in a practical way to help users create custom portfolio analyses and understand the results in plain language.
+
+The project started as a finance analysis notebook and was later converted into a modular Streamlit application.
 
 ## Project Overview
 
-The dashboard allows users to analyze a group of stocks or ETFs over a selected time period. Users can either enter the inputs manually through the Streamlit sidebar or describe the analysis they want using natural language.
+The dashboard allows users to analyze a group of stocks or ETFs over a selected time period. Users can either enter inputs manually through the Streamlit sidebar or describe the analysis they want using natural language.
 
 For example, a user can type:
 
 ```text
-Analyze Apple, Tesla, and Nvidia from April 2020 to  September 2024 with weights of 50%, 30%, and 20%.
+Analyze Apple, Tesla, and Nvidia from April 2020 to September 2024 with weights of 50%, 30%, and 20%.
 ```
 
-The data pipeline is comprised as of:
+The data pipeline is structured as follows:
 
 User prompt or sidebar
         ↓
@@ -30,22 +32,24 @@ finance.py         # perform calculations
         ↓
 app.py             # display tables, charts, and summary
 
-Each file handles a specific part of the data pipeline, with the goal of having a seamless experience for the user.
+Each file handles a specific part of the workflow, with the goal of creating a more organized and reliable user experience.
 
-The calculations, data-sense and financial knowledge were fully written by me. AI was used to validate code and to create the Streamlit application.
-
-The AI integration and input validation also had the aid of AI to be written. The architecture was also designed by me.
+The financial calculations, metric logic, data validation structure, and overall project architecture were designed and implemented by me. AI was used as a development assistant for debugging, code validation, implementation support, and parts of the Streamlit interface.
 
 ## Learnings
 
-This project helped me better understand financial metrics: risk and returns. 
+This project helped me better understand financial metrics related to risk, return, volatility, drawdown, correlation, and portfolio performance.
+It also helped me develop stronger skills in data automation, input validation, modular code organization, and dashboard design. Turning the original notebook into a Streamlit application made the project feel closer to a real data product, not just a static analysis.
 
-Additionally, this project helped me develop data automation and input check. The design and use of architecture made me a better professional, while empowering me with skills that the classroom cannot teach.
+Working with real market data also showed me the importance of having good procedures to clean, validate, and organize data before using it for analysis.
 
-Using real data helped me understand that working with messy data is valuable, as longa as we have good procedures to clean, refine and utilize them.
+Using AI as part of the development process helped me learn how to collaborate with these tools in a practical way. Instead of using AI to replace the financial logic, I used it to support the workflow, improve the interface, and make the final product easier to use.
 
-Having the aid of AI was useful to learn how to collaborate with such tools, which are increasing in importance on today's job market.
+```markdown
+## Core Principle
 
+Python calculates. AI structures inputs and explains results.
+```
 
 ## References
 
