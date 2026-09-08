@@ -3,7 +3,11 @@
 ```markdown
 ## Note
 
-This dashboard currently supports stocks and ETFs traded on U.S. exchanges.
+- This dashboard currently supports stocks and ETFs traded on U.S. exchanges.
+
+- This project is for educational and analytical purposes only. It is not intended to provide financial advice, investment recommendations, or trading signals.
+
+- The dashboard analyzes historical market data and portfolio metrics, but past performance does not guarantee future results. Any investment decisions should be made independently and, when necessary, with the support of a qualified financial professional.
 ```
 
 This project analyzes the historical performance and risk of individual assets and a custom portfolio using real market data from Yahoo Finance.
