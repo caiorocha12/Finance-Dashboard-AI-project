@@ -11,7 +11,7 @@ from pipeline import analyze
 from google.genai.errors import APIError
 import httpx
 
-st.set_page_config(page_title="Caio's Finance Dashboard", page_icon="📈", layout="wide")
+st.set_page_config(page_title="Caio Rocha AI Financial Dashboard Project", page_icon="📈", layout="wide")
 st.markdown("""
 <style>
 .individual-ticker-label {
@@ -23,8 +23,8 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
-st.title("Finance Dashboard")
-st.caption("Explore assets, compare a portfolio, and build an analysis from one prompt.")
+st.title("Caio Rocha AI Financial Dashboard Project")
+st.caption("Explore assets, compare a portfolio, use any date and build an analysis from one prompt.")
 
 
 def secret(name, default=""):
@@ -183,7 +183,7 @@ with portfolio_tab:
         st.subheader(label)
         st.line_chart(portfolio[key] * 100)
 with notes_tab:
-    st.write("These calculations were verified against your finance_data_analysis.ipynb notebook. "
+    st.write("These calculations were verified against the finance_data_analysis.ipynb notebook (located on github). "
              "Prices are adjusted; annualization uses 252 trading days. "
              "Portfolio returns apply fixed weights each day (daily rebalancing), without fees.")
     st.write("The notebook's Sharpe Ratio is CAGR divided by annualized volatility. "
@@ -194,3 +194,4 @@ with notes_tab:
              "Incomplete price histories are rejected so gaps cannot silently change the calculations.")
     st.write("AI extracts settings and can explain calculated results. Python performs all financial calculations. "
              "The same validation and finance functions handle both manual and AI requests.")
+    st.write("This dashboard is intended for visual and educational purposes only. It is not supposed to give you financial tips.")
