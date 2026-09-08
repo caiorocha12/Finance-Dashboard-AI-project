@@ -1,5 +1,11 @@
 # AI-Powered Portfolio Risk & Performance Dashboard
 
+```markdown
+## Note
+
+This dashboard currently supports stocks and ETFs traded on U.S. exchanges.
+```
+
 This project analyzes the historical performance and risk of individual assets and a custom portfolio using real market data from Yahoo Finance.
 
 The main goal of this project was to build a complete automated finance and data science workflow: from validating user inputs, to downloading raw market data, to calculating asset and portfolio metrics, to displaying the results in an interactive dashboard.
