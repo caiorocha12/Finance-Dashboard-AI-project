@@ -1,4 +1,5 @@
-"""Checks at the app boundary, preserving the original calculation functions."""
+# Checks at the app boundary, preserving the original calculation functions.
+
 import numpy as np
 from finance import get_stock_data, calculate_asset_metrics, create_weights, calculate_portfolio_metrics
 
