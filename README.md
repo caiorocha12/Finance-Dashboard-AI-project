@@ -8,6 +8,12 @@ The project uses AI in a practical way to help users create custom portfolio ana
 
 The project started as a finance analysis notebook and was later converted into a modular Streamlit application.
 
+```markdown
+## Core Principle
+
+Python calculates. AI structures inputs and explains results.
+```
+
 ## Project Overview
 
 The dashboard allows users to analyze a group of stocks or ETFs over a selected time period. Users can either enter inputs manually through the Streamlit sidebar or describe the analysis they want using natural language.
@@ -44,12 +50,6 @@ It also helped me develop stronger skills in data automation, input validation, 
 Working with real market data also showed me the importance of having good procedures to clean, validate, and organize data before using it for analysis.
 
 Using AI as part of the development process helped me learn how to collaborate with these tools in a practical way. Instead of using AI to replace the financial logic, I used it to support the workflow, improve the interface, and make the final product easier to use.
-
-```markdown
-## Core Principle
-
-Python calculates. AI structures inputs and explains results.
-```
 
 ## References
 
