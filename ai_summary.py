@@ -1,4 +1,4 @@
-"""Explain calculated results; never send prices, credentials, or raw prompts."""
+# Explain calculated results; never send prices, credentials, or raw prompts.
 import json
 import re
 from google import genai

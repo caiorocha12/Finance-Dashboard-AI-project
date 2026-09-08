@@ -1,4 +1,4 @@
-"""Original functions recovered from Finance Dashboard project conversation."""
+# Original functions recovered from Finance Dashboard project.
 from datetime import datetime
 import numpy as np
 import pandas as pd

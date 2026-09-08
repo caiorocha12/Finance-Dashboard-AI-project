@@ -1,4 +1,4 @@
-"""Shared validation for sidebar and AI inputs; no financial calculations."""
+# Shared validation for sidebar and AI inputs; no financial calculations.
 from datetime import date
 import math
 import re

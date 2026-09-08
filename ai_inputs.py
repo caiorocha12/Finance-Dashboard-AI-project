@@ -1,4 +1,4 @@
-"""Translate a prompt into validated settings using structured outputs."""
+# Translate a prompt into validated settings using structured outputs.
 from datetime import date
 from google import genai
 from google.genai import types
