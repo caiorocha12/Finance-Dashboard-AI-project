@@ -19,7 +19,7 @@ The main goal of this project was to build a complete automated finance and data
 
 The project uses AI in a practical way to help users create custom portfolio analyses and understand the results in plain language.
 
-The project started as a finance analysis notebook and was later converted into a modular Streamlit application.
+The project started as a finance analysis notebook (finance_data_analysis.ipynb) and was later converted into a modular Streamlit application.
 
 You can access the dashboard through https://caiorocha12-finance-ai-dashboard.streamlit.app/
 
