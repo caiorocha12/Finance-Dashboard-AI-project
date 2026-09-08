@@ -1,75 +1,64 @@
-# Finance-Dashboard-AI-project
-AI-Powered Portfolio Risk &amp; Performance Dashboard  This project analyzes stock and ETF performance using historical market data from Yahoo Finance. The current version is a research notebook focused on financial metric calculation and visualization. The next phase will convert the analysis into a Streamlit dashboard with AI.
+# Caio's Finance Dashboard
 
-# AI-Powered Portfolio Risk & Performance Dashboard
+This Streamlit app wraps the four functions recovered from the linked **Finance Dashboard project** conversation. Verified against your supplied finance_data_analysis.ipynb: final asset, portfolio, and weight functions are structurally identical. Every returned table and series matched in four single/multi-asset, equal/custom-weight scenarios. The original notebook was not modified.
 
-This project analyzes the historical performance and risk of individual assets and a custom portfolio using real market data from Yahoo Finance.
+## Run
 
-The main goal of this project is to build a complete finance/data science workflow: starting from raw stock price data, calculating financial metrics, creating visualizations, and later turning everything into an interactive dashboard with an AI layer.
+From this folder, using Python 3.10 or newer:
 
-Right now, the project is in the notebook analysis phase. The dashboard and AI features are the next step.
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
+```
 
-## Project Overview
+Manual inputs work without a Gemini key. For AI, create `.streamlit/secrets.toml` locally (this file is ignored by Git):
 
-The project allows the user to choose a group of stocks or ETFs, download historical price data, calculate return and risk metrics, and compare the portfolio against SPY as a benchmark.
+```toml
+GEMINI_API_KEY = "your-key-here"
+GEMINI_MODEL = "gemini-3.5-flash-lite"
+```
 
-The analysis is divided into two main parts:
+Environment variables with the same names also work. Select a model your API account can access that supports structured outputs. Never put a real key in app.py or commit it.
 
-1. Individual asset analysis  
-2. Portfolio-level analysis  
+Try: **AAPL 60%, MSFT 40%, from 2022-01-01 to 2025-01-01, benchmark SPY**.
 
-For the individual assets, the project compares each ticker separately. For the portfolio section, the project combines the selected assets using custom weights and evaluates how the full portfolio behaves over time.
+## Step by step
 
-## Current Features
+1. **Keep the calculations in `finance.py`.** The original calculation bodies and output dictionary keys are retained. Downloads now run sequentially to avoid a cache database lock observed during testing. Moving the functions out of the notebook lets the dashboard import them without executing notebook cells.
+2. **Collect settings in `app.py`.** The sidebar has tickers, dates, benchmark, and optional percentage weights. Blank weights mean equal allocation. A form applies the inputs together when you click Build dashboard.
+3. **Validate inputs in `inputs.py`.** Both manual and AI settings must pass identical checks: unique symbols, valid dates, finite nonnegative weights, and a 100% total. The app supports long-only, fully invested portfolios.
+4. **Call the engine in `pipeline.py`.** Download prices, calculate asset metrics, create weights, then calculate portfolio metrics. Missing symbols, gaps, invalid prices, and ranges with fewer than three prices produce an explanation. No missing ticker is silently discarded. Results are cached for an hour.
+5. **Render the function outputs in `app.py`.** Display summary tables, cumulative returns, rolling volatility, drawdowns, weights, and portfolio-versus-benchmark growth. The metric selector provides all asset bar charts without repeating the same plotting code. CSV downloads contain the displayed summaries.
+6. **Translate prompts in `ai_inputs.py`.** Google Gemini returns structured settings; Python validates them, fills the sidebar, and runs the same analysis automatically. AI never generates executable code or calculates financial metrics. Incomplete requests produce a clarification instead. Failed requests clear the prior dashboard so old results are not mistaken for new ones.
 
-The current notebook includes:
+## Preserved calculation conventions
 
-- Historical stock data download using `yfinance`
-- Daily returns calculation
-- Cumulative return analysis
-- Total return calculation
-- Average daily return
-- CAGR
-- Annualized volatility
-- 30-day rolling volatility
-- Max drawdown
-- Best and worst trading days
-- Value at Risk 95%
-- Expected Shortfall 95%
-- Sharpe Ratio
-- Correlation with SPY
-- Portfolio weights
-- Portfolio daily returns
-- Portfolio cumulative return
-- Portfolio drawdown
-- Portfolio rolling volatility
-- Portfolio vs SPY comparison
+- Adjusted prices; 252 trading days per year; 30-return rolling volatility.
+- Fixed weights applied every day imply daily rebalancing, without transaction costs.
+- The existing Sharpe label represents CAGR / annualized volatility, without a risk-free rate.
+- Asset CAGR counts price rows; portfolio CAGR counts return rows.
+- Drawdown starts its peak at the first calculated growth value, potentially understating an initial loss. No initial $1 baseline is inserted in the recovered functions.
+- The data provider's end date is exclusive. Short periods may have no rolling-volatility line; undefined ratios remain missing.
 
-## Visualizations
+These conventions are documented rather than changed to preserve your existing logic. The app rejects incomplete price matrices before the original functions run, avoiding differences in pandas missing-price filling behavior.
 
-The project currently includes visualizations for both individual assets and the portfolio.
+## Tests
 
-### Individual Asset Visualizations
+```sh
+pip install pytest
+python -m pytest -q
+```
 
-- Cumulative return over time
-- Rolling volatility over time
-- Total return by ticker
-- Average daily return by ticker
-- CAGR by ticker
-- Annualized volatility by ticker
-- Max drawdown by ticker
-- Sharpe ratio by ticker
+Tests use deterministic synthetic prices and mocked AI responses; they do not spend API credits.
 
-### Portfolio Visualizations
+## References
 
-- Portfolio weights
-- Portfolio cumulative return
-- Portfolio vs SPY cumulative growth
-- Portfolio drawdown over time
-- Portfolio rolling volatility
+- [Streamlit forms](https://docs.streamlit.io/develop/api-reference/execution-flow/st.form)
+- [Streamlit session state](https://docs.streamlit.io/develop/api-reference/caching-and-state/st.session_state)
+- [Google Gemini structured outputs](https://ai.google.dev/gemini-api/docs/structured-output)
 
-Some metrics, such as VaR, Expected Shortfall, best/worst day, and correlation with SPY, are kept mainly in the summary table because they are useful but not always visually intuitive.
+## Chart views and AI summary
 
-## Why SPY Is Used
-
-SPY is used as the benchmark for the project. Even if the user does not include SPY in the portfolio, the app will use SPY internally for comparison metrics such as correlation, beta, and portfolio comparison.
+Use Together / Individual under Assets to overlay stocks or show separate charts per stock. Generate summary creates up to 300 words from the current allocations, calculated asset/portfolio metrics and benchmark return. It sends only these results and dates to Gemini. The summary persists when switching chart views and clears when a new analysis is built. Python enforces the word limit.
