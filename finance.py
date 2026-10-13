@@ -4,6 +4,9 @@ import numpy as np
 import pandas as pd
 import yfinance as yf
 
+# Approximate average risk free rate for the period (T-bill)
+risk_free_rate = 0.04
+
 def calculate_portfolio_metrics(daily_returns, portfolio_tickers, weights, benchmark="SPY"):
 
     # Returns for only the assets inside the portfolio
@@ -52,7 +55,7 @@ def calculate_portfolio_metrics(daily_returns, portfolio_tickers, weights, bench
     portfolio_expected_shortfall = portfolio_bad_returns.mean()
 
     # Sharpe Ratio
-    portfolio_sharpe_ratio = portfolio_cagr / portfolio_annualized_volatility
+    portfolio_sharpe_ratio = (portfolio_cagr - risk_free_rate) / portfolio_annualized_volatility
 
     # Correlation with benchmark
     portfolio_benchmark_correlation = portfolio_daily_returns.corr(daily_returns[benchmark])
@@ -221,7 +224,7 @@ def calculate_asset_metrics(close_price, portfolio_tickers, benchmark="SPY"):
     expected_shortfall = bad_returns.mean()
 
     # Sharpe Ratio
-    sharpe_ratio = cagr / annualized_volatility
+    sharpe_ratio = (cagr - risk_free_rate) / annualized_volatility
 
     # Correlation with benchmark
     benchmark_returns = daily_returns[benchmark]
