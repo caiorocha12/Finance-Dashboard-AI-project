@@ -186,8 +186,7 @@ with notes_tab:
     st.write("These calculations were verified against the finance_data_analysis.ipynb notebook (located on github). "
              "Prices are adjusted; annualization uses 252 trading days. "
              "Portfolio returns apply fixed weights each day (daily rebalancing), without fees.")
-    st.write("The notebook's Sharpe Ratio is CAGR divided by annualized volatility. "
-             "Drawdown peaks begin at the first calculated growth value, so an initial loss "
+    st.write("Drawdown peaks begin at the first calculated growth value, so an initial loss "
              "can be understated. Asset CAGR counts price rows; portfolio CAGR counts return rows. ")
     st.write("Rolling volatility needs 30 daily returns. Undefined metrics appear as missing values. "
              "Incomplete price histories are rejected so gaps cannot silently change the calculations.")
