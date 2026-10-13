@@ -32,7 +32,6 @@ def generate_summary(payload, api_key, model):
                     'Percent-labelled values are already percentages; do not multiply by 100. '
                     'Do not invent news, causes, forecasts, correlations or individual return '
                     'contributions. No buy/sell recommendations. Missing values are unavailable. '
-                    'The supplied Sharpe uses CAGR/volatility, not a standard excess-return Sharpe. '
                     'Weights imply daily rebalancing without fees. Drawdown may understate an '
                     'initial loss because its first peak omits the initial investment baseline. '
                     'Use two or three short paragraphs without headings.'),
