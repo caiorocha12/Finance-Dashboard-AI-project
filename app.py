@@ -188,8 +188,7 @@ with notes_tab:
              "Portfolio returns apply fixed weights each day (daily rebalancing), without fees.")
     st.write("The notebook's Sharpe Ratio is CAGR divided by annualized volatility. "
              "Drawdown peaks begin at the first calculated growth value, so an initial loss "
-             "can be understated. Asset CAGR counts price rows; portfolio CAGR counts return rows. "
-             "These existing conventions are preserved, not corrected in this conversion.")
+             "can be understated. Asset CAGR counts price rows; portfolio CAGR counts return rows. ")
     st.write("Rolling volatility needs 30 daily returns. Undefined metrics appear as missing values. "
              "Incomplete price histories are rejected so gaps cannot silently change the calculations.")
     st.write("AI extracts settings and can explain calculated results. Python performs all financial calculations. "
