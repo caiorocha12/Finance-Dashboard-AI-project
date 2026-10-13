@@ -65,7 +65,7 @@ app.py             # display tables, charts, and summary
 
 Each file handles a specific part of the workflow, with the goal of creating a more organized and reliable user experience.
 
-The financial calculations, metric logic, data validation structure, and overall project architecture were designed and implemented by me. AI was used as a development assistant for debugging, code validation, implementation support, and parts of the Streamlit interface.
+I designed the financial calculations and metric logic (finance.py and the original notebook) and the overall architecture. The data validation, pipeline, Streamlit interface and tests were implemented with AI assistance, which I directed and reviewed
 
 ## Learnings
 
